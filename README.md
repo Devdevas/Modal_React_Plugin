@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+## A React modal npm package
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Install
 
-## Available Scripts
+#### Using npm:
 
-In the project directory, you can run:
+`$npm install @ousshmi/react-modal`
 
-### `npm start`
+#### Using yarn:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+`$yarn add @ousshmi/react-modal`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Usage
 
-### `npm test`
+##### In a React app, import and use the Modal components:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`import Modal from '@ousshmi/react-modal'`
 
-### `npm run build`
+#### Modal props
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| Name             | Type     | Description                                                                |
+| ---------------- | -------- | -------------------------------------------------------------------------- |
+| show             | boolean  | Show/Hide the modal                                                        |
+| onClose          | function | Use this function to set show value to 'false' and close the modal         |
+| title            | string   | Customize the title of the modal                                           |
+| message          | string   | Customize the message of the modal                                         |
+| closeButton      | boolean  | Show/Hide the close button                                                 |
+| closeIcon        | string   | A path to a close icon you want to use when 'closeButton = {false}'        |
+| addNewButton     | boolean  | Show/Hide a new button, If 'true' a new button will be added               |
+| newButtonText    | string   | When 'addNewButton={true}' you could customize the text of the new button  |
+| onClickNewButton | function | Use this function to do whatever you want after clicking on the new button |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Modal style props
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Name               | Type   | Description                                                      |
+| ------------------ | ------ | ---------------------------------------------------------------- |
+| wrapperBackground  | string | A normal CSS values                                              |
+| margin             | string | A normal CSS values                                              |
+| width              | string | A normal CSS values                                              |
+| maxWidth           | string | A normal CSS values                                              |
+| border             | string | A normal CSS values                                              |
+| borderRadius       | string | Customize CSS values and use (overFlow : "hidden") to see result |
+| overflow           | string | A normal CSS values                                              |
+| headerBackground   | string | A normal CSS values                                              |
+| headerPadding      | string | A normal CSS values                                              |
+| headerFont         | string | Everything about the font, example values: "bold 15px roboto"    |
+| headertextColor    | string | A normal CSS values                                              |
+| bodyBackground     | string | A normal CSS values                                              |
+| bodyPadding        | string | A normal CSS values                                              |
+| bodyFont           | string | Everything about the font, example values: "bold 15px roboto"    |
+| bodytextColor      | string | A normal CSS values                                              |
+| bodyBorderTop      | string | A normal CSS values                                              |
+| bodyBorderBottom   | string | A normal CSS values                                              |
+| footerPadding      | string | A normal CSS values                                              |
+| footerBackground   | string | A normal CSS values                                              |
+| buttonPadding      | string | A normal CSS values                                              |
+| buttonBackground   | string | A normal CSS values                                              |
+| buttonBorder       | string | A normal CSS values                                              |
+| buttonBorderRadius | string | A normal CSS values                                              |
+| buttonFont         | string | Everything about the font, example values: "bold 15px roboto"    |
+| buttonTextColor    | string | A normal CSS values                                              |
+| buttonMargin       | string | A normal CSS values                                              |
 
-### `npm run eject`
+#### Example usage
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    import { useState } from "react";
+    import Modal from "./components/Modal";
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    function App() {
+    const [show, setShow] = useState(false);
+    return (
+        <div>
+            <button onClick={() => setShow(true)}>Open Modal</button>
+            <Modal
+                onClose={() => setShow(false)}
+                show={show}
+                message="The modal is opened!"
+                closeButton={true}
+                borderRadius="5px"
+                overflow="hidden"
+                headerBackground="gray"
+                addNewButton
+                newButtonText="Go to..."
+            />
+        </div>
+    );
+    }
+    export default App;
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
